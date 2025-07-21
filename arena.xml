@@ -1,7 +1,7 @@
 <mujoco model="unnamed_model">
   <compiler autolimits="true" angle="radian"/>
   <option integrator="implicitfast"/>
-  <size nkey="2"/>
+  <size nkey="1"/>
   <default>
     <default class="/"/>
     <default class="panda/">
@@ -259,6 +259,5 @@
   </actuator>
   <keyframe>
     <key name="panda/home" qpos="-0.087499999999999994 -0.042900000000000001 0.13600000000000001 -1.6499999999999999 -0.060100000000000001 1.5800000000000001 0.0123 -9.9999999999999995e-08 9.9999999999999995e-07"/>
-    <key name="panda/ctrl" qpos="-0.087499999999999994 -0.042900000000000001 0.13600000000000001 -1.6499999999999999 -0.060100000000000001 1.5800000000000001 0.0123 -9.9999999999999995e-08 9.9999999999999995e-07"/>
   </keyframe>
 </mujoco>

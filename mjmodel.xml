@@ -267,6 +267,6 @@
   </actuator>
 
   <keyframe>
-    <key name="panda/home" qpos="0 0 0 -1.57079 0 1.57079 -0.7853 0.04 0.04" ctrl="0 0 0 -1.57079 0 1.57079 -0.7853 255"/>
+    <key name="panda/home" qpos="-0.0875 -0.0429 0.136 -1.65 -0.0601 1.58 0.0123 -1e-07 1e-06"/>
   </keyframe>
 </mujoco>
