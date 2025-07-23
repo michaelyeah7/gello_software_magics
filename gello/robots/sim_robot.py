@@ -138,6 +138,7 @@ class MujocoRobotServer:
         host: str = "127.0.0.1",
         port: int = 5556,
         print_joints: bool = False,
+        home_qpos: Optional[np.array] = None
     ):
         self._has_gripper = gripper_xml_path is not None
         arena = build_scene(xml_path, gripper_xml_path)
@@ -158,8 +159,12 @@ class MujocoRobotServer:
 
         self._num_joints = self._model.nu
 
-        self._joint_state = np.zeros(self._num_joints)
-        self._joint_cmd = self._joint_state
+        if home_qpos is not None:
+            self._data.qpos[:] = home_qpos
+            self._joint_cmd = home_qpos[:self._num_joints]
+        else:
+            self._joint_state = np.zeros(self._num_joints)
+            self._joint_cmd = np.zeros(self._num_joints)
 
         self._zmq_server = ZMQRobotServer(robot=self, host=host, port=port)
         self._zmq_server_thread = ZMQServerThread(self._zmq_server)

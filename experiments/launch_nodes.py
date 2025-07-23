@@ -31,14 +31,20 @@ def launch_robot_server(args: Args):
         server.serve()
     elif args.robot == "sim_panda":
         from gello.robots.sim_robot import MujocoRobotServer
+        import numpy as np
 
         MENAGERIE_ROOT: Path = (
             Path(__file__).parent.parent / "third_party" / "mujoco_menagerie"
         )
         xml = MENAGERIE_ROOT / "franka_emika_panda" / "panda.xml"
         gripper_xml = None
+
+        home_qpos = np.array([
+            -0.0875, -0.0429, 0.136, -1.65, -0.0601, 1.58, 0.0123, 0.04, 0.04
+            ])
+        
         server = MujocoRobotServer(
-            xml_path=xml, gripper_xml_path=gripper_xml, port=port, host=args.hostname
+            xml_path=xml, gripper_xml_path=gripper_xml, port=port, host=args.hostname, home_qpos=home_qpos,
         )
         server.serve()
     elif args.robot == "sim_xarm":
